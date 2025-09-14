@@ -60,6 +60,8 @@ export default {
         vault: {
           "card-hover": "hsl(var(--vault-card-hover))",
           "border-glow": "var(--vault-border-glow)",
+          "backdrop": "var(--vault-backdrop)",
+          "glass": "var(--vault-glass)",
         },
       },
       borderRadius: {
@@ -100,12 +102,30 @@ export default {
             transform: "translateY(-4px)",
           },
         },
+        "vault-shimmer": {
+          "0%": {
+            backgroundPosition: "-200% 0",
+          },
+          "100%": {
+            backgroundPosition: "200% 0",
+          },
+        },
+        "vault-pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "var(--vault-glow-primary)",
+          },
+          "50%": {
+            boxShadow: "var(--vault-glow-hover)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "vault-glow": "vault-glow 2s ease-in-out infinite",
         "vault-float": "vault-float 3s ease-in-out infinite",
+        "vault-shimmer": "vault-shimmer 2s ease-in-out infinite",
+        "vault-pulse-glow": "vault-pulse-glow 3s ease-in-out infinite",
       },
       backgroundImage: {
         "vault-gradient": "var(--vault-gradient)",
@@ -114,6 +134,11 @@ export default {
       boxShadow: {
         "vault": "var(--vault-shadow)",
         "vault-hover": "var(--vault-shadow-hover)",
+        "vault-glow": "var(--vault-glow-primary)",
+        "vault-glow-hover": "var(--vault-glow-hover)",
+      },
+      backdropBlur: {
+        vault: "20px",
       },
     },
   },

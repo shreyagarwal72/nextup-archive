@@ -16,6 +16,7 @@ export interface FileItem {
 interface FileCardProps {
   file: FileItem;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const getFileIcon = (type: string) => {
@@ -56,7 +57,7 @@ const getFileTypeColor = (type: string) => {
   }
 };
 
-export const FileCard = ({ file, className }: FileCardProps) => {
+export const FileCard = ({ file, className, style }: FileCardProps) => {
   const Icon = getFileIcon(file.type);
   const iconColor = getFileTypeColor(file.type);
 
@@ -72,30 +73,37 @@ export const FileCard = ({ file, className }: FileCardProps) => {
   };
 
   return (
-    <Card className={cn(
-      "group relative overflow-hidden border-border bg-card backdrop-blur-sm",
-      "hover:bg-vault-card-hover hover:shadow-vault-hover",
-      "transition-all duration-300 ease-out hover:scale-[1.02]",
-      "hover:border-vault-border-glow",
-      className
-    )}>
-      <div className="absolute inset-0 bg-vault-gradient-subtle opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      <div className="relative p-6 space-y-4">
+    <Card 
+      className={cn(
+        "group relative overflow-hidden border-border/50 backdrop-blur-vault bg-vault-glass",
+        "hover:bg-vault-card-hover hover:shadow-vault-hover hover:border-vault-border-glow",
+        "transition-all duration-500 ease-out hover:scale-[1.03] hover:-translate-y-2",
+        "before:absolute before:inset-0 before:bg-vault-gradient-subtle before:opacity-0",
+        "before:transition-opacity before:duration-500 hover:before:opacity-100",
+        "after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/5 after:to-transparent",
+        "after:translate-x-[-100%] after:animate-vault-shimmer after:duration-[2s]",
+        "hover:animate-vault-pulse-glow",
+        className
+      )}
+      style={style}
+    >
+      <div className="relative z-10 p-6 space-y-4">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
             <div className={cn(
-              "p-2 rounded-lg bg-secondary/50 group-hover:bg-secondary/70 transition-colors",
+              "p-3 rounded-xl bg-secondary/30 backdrop-blur-sm border border-white/10",
+              "group-hover:bg-secondary/50 group-hover:scale-110 group-hover:rotate-3",
+              "transition-all duration-300 ease-out shadow-lg",
               iconColor
             )}>
-              <Icon className="h-5 w-5" />
+              <Icon className="h-6 w-6" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors truncate">
+              <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 truncate text-lg">
                 {file.title}
               </h3>
               {file.description && (
-                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                <p className="text-sm text-muted-foreground/80 mt-1 line-clamp-2 leading-relaxed">
                   {file.description}
                 </p>
               )}
@@ -104,49 +112,62 @@ export const FileCard = ({ file, className }: FileCardProps) => {
         </div>
 
         {file.thumbnail && file.type === 'image' && (
-          <div className="aspect-video rounded-lg overflow-hidden bg-secondary/20">
+          <div className="aspect-video rounded-xl overflow-hidden bg-secondary/10 border border-white/10 relative">
             <img 
               src={file.thumbnail} 
               alt={file.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
         )}
 
         {file.thumbnail && file.type === 'video' && (
-          <div className="aspect-video rounded-lg overflow-hidden bg-secondary/20 relative">
+          <div className="aspect-video rounded-xl overflow-hidden bg-secondary/10 border border-white/10 relative group/video">
             <video 
               src={file.thumbnail}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               muted
               loop
               onMouseEnter={(e) => e.currentTarget.play()}
               onMouseLeave={(e) => e.currentTarget.pause()}
             />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-black/50 rounded-full p-3">
-                <Play className="h-6 w-6 text-white fill-white" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-80 group-hover/video:opacity-0 transition-opacity duration-300">
+              <div className="bg-black/60 backdrop-blur-sm rounded-full p-4 border border-white/20">
+                <Play className="h-8 w-8 text-white fill-white" />
               </div>
             </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
         )}
 
         <Button
           onClick={handleClick}
-          className="w-full bg-vault-gradient hover:opacity-90 text-white border-0 shadow-vault group-hover:shadow-vault-hover transition-all duration-300"
-          size="sm"
-        >
-          {file.isExternal ? (
-            <>
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Open Link
-            </>
-          ) : (
-            <>
-              <Download className="h-4 w-4 mr-2" />
-              Download
-            </>
+          className={cn(
+            "w-full bg-vault-gradient hover:opacity-90 text-white border-0",
+            "shadow-vault-glow hover:shadow-vault-glow-hover",
+            "transition-all duration-300 ease-out hover:scale-105",
+            "relative overflow-hidden group/btn",
+            "before:absolute before:inset-0 before:bg-gradient-to-r",
+            "before:from-transparent before:via-white/20 before:to-transparent",
+            "before:translate-x-[-100%] hover:before:translate-x-[100%]",
+            "before:transition-transform before:duration-700"
           )}
+          size="lg"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-2 font-medium">
+            {file.isExternal ? (
+              <>
+                <ExternalLink className="h-4 w-4" />
+                Open Link
+              </>
+            ) : (
+              <>
+                <Download className="h-4 w-4" />
+                Download
+              </>
+            )}
+          </span>
         </Button>
       </div>
     </Card>

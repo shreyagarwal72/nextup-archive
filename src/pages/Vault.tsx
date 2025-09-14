@@ -80,6 +80,14 @@ const vaultFiles: FileItem[] = [
     url: "https://www.mediafire.com/file/0s4rqywxv9zvgyt/base.apk/file",
     isExternal: true,
   },
+  {
+    id: "10",
+    title: "🎓 All Premium Courses",
+    description: "Complete collection of premium educational courses and tutorials",
+    type: "drive",
+    url: "https://drive.google.com/drive/folders/1RpqtuQzlgO3HVfl5-cQpjOBbuxtXw-8a",
+    isExternal: true,
+  },
 ];
 
 const Vault = () => {
@@ -106,35 +114,52 @@ const Vault = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="relative overflow-hidden min-h-[60vh] flex items-center">
-        <div className="absolute inset-0 bg-vault-gradient opacity-20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,hsl(263_85%_65%_/_0.15),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(240_100%_70%_/_0.1),transparent_60%)]" />
+      <div className="relative overflow-hidden min-h-[70vh] flex items-center">
+        {/* Animated mesh background */}
+        <div className="absolute inset-0 bg-vault-mesh animate-vault-mesh opacity-40" />
+        <div className="absolute inset-0 bg-vault-gradient opacity-25" />
         
-        {/* Animated background elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-vault-gradient rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-vault-gradient rounded-full blur-3xl opacity-15 animate-pulse [animation-delay:1s]" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-vault-gradient rounded-full blur-[120px] opacity-10 animate-vault-pulse-glow" />
+        {/* Floating particles */}
+        <div className="absolute top-16 left-12 w-3 h-3 bg-vault-particle rounded-full animate-vault-particle-float" />
+        <div className="absolute top-32 right-20 w-2 h-2 bg-vault-particle rounded-full animate-vault-particle-float [animation-delay:2s]" />
+        <div className="absolute bottom-24 left-32 w-4 h-4 bg-vault-particle rounded-full animate-vault-particle-float [animation-delay:4s]" />
+        <div className="absolute bottom-32 right-16 w-2 h-2 bg-vault-particle rounded-full animate-vault-particle-float [animation-delay:1s]" />
+        <div className="absolute top-1/2 left-16 w-3 h-3 bg-vault-particle rounded-full animate-vault-particle-float [animation-delay:3s]" />
+        <div className="absolute top-1/3 right-32 w-2 h-2 bg-vault-particle rounded-full animate-vault-particle-float [animation-delay:5s]" />
         
-        <div className="relative container mx-auto px-4 py-20 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-vault-glass backdrop-blur-vault border border-vault-border-glow mb-8 animate-vault-float">
-            <Shield className="h-5 w-5 text-primary animate-pulse" />
-            <span className="text-sm font-semibold text-primary">Secure Digital Vault</span>
+        {/* Large glowing orbs */}
+        <div className="absolute top-20 left-10 w-40 h-40 bg-vault-gradient rounded-full blur-3xl opacity-20 animate-vault-float" />
+        <div className="absolute bottom-20 right-10 w-48 h-48 bg-vault-gradient rounded-full blur-3xl opacity-15 animate-vault-float [animation-delay:2s]" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-vault-gradient rounded-full blur-[150px] opacity-12 animate-vault-pulse-glow" />
+        
+        <div className="relative container mx-auto px-4 py-24 text-center z-10">
+          <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-vault-glass backdrop-blur-vault border border-vault-border-glow mb-10 animate-vault-float shadow-vault-glow">
+            <Shield className="h-6 w-6 text-primary animate-pulse" />
+            <span className="text-base font-bold text-primary tracking-wide">SECURE DIGITAL VAULT</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold bg-vault-gradient bg-clip-text text-transparent mb-6 animate-fade-in">
-            💎 Nextup Studio Vault
+          <h1 className="text-6xl md:text-8xl font-black bg-vault-gradient bg-clip-text text-transparent mb-8 animate-fade-in tracking-tight">
+            💎 Nextup Studio
           </h1>
+          <div className="text-3xl md:text-5xl font-bold bg-vault-gradient bg-clip-text text-transparent mb-12 animate-fade-in [animation-delay:100ms]">
+            Vault
+          </div>
           
-          <p className="text-xl md:text-2xl text-muted-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in [animation-delay:200ms]">
-            Your premium digital sanctuary for exclusive apps, assets, and entertainment resources.
+          <p className="text-xl md:text-2xl text-muted-foreground/90 mb-16 max-w-4xl mx-auto leading-relaxed animate-fade-in [animation-delay:200ms]">
+            Your premium digital sanctuary for <span className="text-primary font-semibold">exclusive apps</span>, 
+            <span className="text-primary font-semibold"> premium courses</span>, and 
+            <span className="text-primary font-semibold"> entertainment resources</span>.
           </p>
 
-          <div className="flex items-center justify-center gap-3 text-base text-muted-foreground/80 animate-fade-in [animation-delay:400ms]">
-            <Sparkles className="h-5 w-5 text-primary animate-pulse" />
-            <span className="font-medium">{vaultFiles.length} Premium Resources Available</span>
-            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span>Updated Daily</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg text-muted-foreground/80 animate-fade-in [animation-delay:400ms]">
+            <div className="flex items-center gap-3">
+              <Sparkles className="h-6 w-6 text-primary animate-pulse" />
+              <span className="font-semibold">{vaultFiles.length} Premium Resources</span>
+            </div>
+            <div className="hidden sm:block w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="font-medium">Updated Daily</span>
+            <div className="hidden sm:block w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="font-medium">100% Secure</span>
           </div>
         </div>
       </div>

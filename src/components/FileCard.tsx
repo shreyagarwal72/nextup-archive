@@ -41,19 +41,19 @@ const getFileIcon = (type: string) => {
 const getFileTypeColor = (type: string) => {
   switch (type) {
     case 'image':
-      return 'text-emerald-400';
+      return 'text-emerald-400 group-hover:text-emerald-300';
     case 'video':
-      return 'text-red-400';
+      return 'text-red-400 group-hover:text-red-300';
     case 'apk':
     case 'app':
-      return 'text-blue-400';
+      return 'text-blue-400 group-hover:text-blue-300';
     case 'drive':
-      return 'text-yellow-400';
+      return 'text-amber-400 group-hover:text-amber-300';
     case 'telegram':
-      return 'text-cyan-400';
+      return 'text-cyan-400 group-hover:text-cyan-300';
     case 'link':
     default:
-      return 'text-primary';
+      return 'text-primary group-hover:text-primary/80';
   }
 };
 

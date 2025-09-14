@@ -62,6 +62,7 @@ export default {
           "border-glow": "var(--vault-border-glow)",
           "backdrop": "var(--vault-backdrop)",
           "glass": "var(--vault-glass)",
+          "particle": "var(--vault-particle)",
         },
       },
       borderRadius: {
@@ -118,6 +119,25 @@ export default {
             boxShadow: "var(--vault-glow-hover)",
           },
         },
+        "vault-particle-float": {
+          "0%, 100%": {
+            transform: "translateY(0px) translateX(0px) rotate(0deg)",
+          },
+          "33%": {
+            transform: "translateY(-20px) translateX(10px) rotate(120deg)",
+          },
+          "66%": {
+            transform: "translateY(10px) translateX(-15px) rotate(240deg)",
+          },
+        },
+        "vault-mesh": {
+          "0%, 100%": {
+            backgroundPosition: "0% 0%, 100% 100%, 50% 0%",
+          },
+          "50%": {
+            backgroundPosition: "100% 100%, 0% 0%, 0% 100%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -126,10 +146,13 @@ export default {
         "vault-float": "vault-float 3s ease-in-out infinite",
         "vault-shimmer": "vault-shimmer 2s ease-in-out infinite",
         "vault-pulse-glow": "vault-pulse-glow 3s ease-in-out infinite",
+        "vault-particle-float": "vault-particle-float 6s ease-in-out infinite",
+        "vault-mesh": "vault-mesh 20s ease-in-out infinite",
       },
       backgroundImage: {
         "vault-gradient": "var(--vault-gradient)",
         "vault-gradient-subtle": "var(--vault-gradient-subtle)",
+        "vault-mesh": "var(--vault-mesh)",
       },
       boxShadow: {
         "vault": "var(--vault-shadow)",

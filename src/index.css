@@ -8,54 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 13% 9%;
+    --background: 215 25% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 224 15% 12%;
+    --card: 220 20% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 15% 12%;
+    --popover: 220 20% 6%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 263 85% 65%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 100% 60%;
+    --primary-foreground: 220 25% 4%;
 
-    --secondary: 217 32% 17%;
+    --secondary: 217 32% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 32% 17%;
+    --muted: 217 32% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 263 85% 65%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 195 100% 60%;
+    --accent-foreground: 220 25% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 263 85% 65%;
+    --border: 217 32% 12%;
+    --input: 217 32% 12%;
+    --ring: 195 100% 60%;
 
     --radius: 0.75rem;
 
     /* Vault-specific design tokens */
-    --vault-gradient: linear-gradient(135deg, hsl(263 85% 65%) 0%, hsl(240 100% 70%) 30%, hsl(280 90% 60%) 70%, hsl(310 85% 65%) 100%);
-    --vault-gradient-subtle: linear-gradient(135deg, hsl(263 85% 65% / 0.12) 0%, hsl(240 100% 70% / 0.08) 30%, hsl(280 90% 60% / 0.10) 70%, hsl(310 85% 65% / 0.06) 100%);
-    --vault-card-hover: 224 30% 20%;
-    --vault-border-glow: hsl(263 85% 65% / 0.5);
-    --vault-shadow: 0 15px 50px hsl(263 85% 65% / 0.25);
-    --vault-shadow-hover: 0 25px 80px hsl(263 85% 65% / 0.4);
-    --vault-shadow-3d: 0 20px 60px hsl(263 85% 65% / 0.3), 0 8px 16px hsl(220 13% 9% / 0.4), inset 0 1px 0 hsl(263 85% 65% / 0.2);
-    --vault-shadow-3d-hover: 0 30px 100px hsl(263 85% 65% / 0.5), 0 12px 24px hsl(220 13% 9% / 0.6), inset 0 1px 0 hsl(263 85% 65% / 0.3);
-    --vault-glow-primary: 0 0 40px hsl(263 85% 65% / 0.4);
-    --vault-glow-hover: 0 0 70px hsl(263 85% 65% / 0.6);
-    --vault-backdrop: hsl(220 13% 9% / 0.85);
-    --vault-glass: hsl(224 15% 12% / 0.7);
-    --vault-glass-3d: hsl(224 15% 12% / 0.8);
-    --vault-particle: hsl(263 85% 65% / 0.15);
-    --vault-mesh: radial-gradient(circle at 25% 25%, hsl(263 85% 65% / 0.1) 0%, transparent 50%),
-                   radial-gradient(circle at 75% 75%, hsl(240 100% 70% / 0.08) 0%, transparent 50%),
-                   radial-gradient(circle at 50% 100%, hsl(280 90% 60% / 0.06) 0%, transparent 50%);
+    --vault-gradient: linear-gradient(135deg, hsl(195 100% 60%) 0%, hsl(210 100% 65%) 30%, hsl(225 90% 70%) 70%, hsl(240 85% 75%) 100%);
+    --vault-gradient-subtle: linear-gradient(135deg, hsl(195 100% 60% / 0.12) 0%, hsl(210 100% 65% / 0.08) 30%, hsl(225 90% 70% / 0.10) 70%, hsl(240 85% 75% / 0.06) 100%);
+    --vault-card-hover: 220 30% 8%;
+    --vault-border-glow: hsl(195 100% 60% / 0.5);
+    --vault-shadow: 0 15px 50px hsl(195 100% 60% / 0.25);
+    --vault-shadow-hover: 0 25px 80px hsl(195 100% 60% / 0.4);
+    --vault-shadow-3d: 0 20px 60px hsl(195 100% 60% / 0.3), 0 8px 16px hsl(215 25% 4% / 0.4), inset 0 1px 0 hsl(195 100% 60% / 0.2);
+    --vault-shadow-3d-hover: 0 30px 100px hsl(195 100% 60% / 0.5), 0 12px 24px hsl(215 25% 4% / 0.6), inset 0 1px 0 hsl(195 100% 60% / 0.3);
+    --vault-glow-primary: 0 0 40px hsl(195 100% 60% / 0.4);
+    --vault-glow-hover: 0 0 70px hsl(195 100% 60% / 0.6);
+    --vault-backdrop: hsl(215 25% 4% / 0.95);
+    --vault-glass: hsl(220 20% 6% / 0.8);
+    --vault-glass-3d: hsl(220 20% 6% / 0.9);
+    --vault-particle: hsl(195 100% 60% / 0.15);
+    --vault-mesh: radial-gradient(circle at 25% 25%, hsl(195 100% 60% / 0.1) 0%, transparent 50%),
+                   radial-gradient(circle at 75% 75%, hsl(210 100% 65% / 0.08) 0%, transparent 50%),
+                   radial-gradient(circle at 50% 100%, hsl(225 90% 70% / 0.06) 0%, transparent 50%);
 
     --sidebar-background: 0 0% 98%;
 

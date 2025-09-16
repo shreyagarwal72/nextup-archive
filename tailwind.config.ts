@@ -62,6 +62,7 @@ export default {
           "border-glow": "var(--vault-border-glow)",
           "backdrop": "var(--vault-backdrop)",
           "glass": "var(--vault-glass)",
+          "glass-3d": "var(--vault-glass-3d)",
           "particle": "var(--vault-particle)",
         },
       },
@@ -133,9 +134,42 @@ export default {
         "vault-mesh": {
           "0%, 100%": {
             backgroundPosition: "0% 0%, 100% 100%, 50% 0%",
+            transform: "scale(1) rotate(0deg)",
+            opacity: "0.4"
           },
-          "50%": {
+          "33%": {
+            backgroundPosition: "50% 50%, 50% 50%, 100% 50%",
+            transform: "scale(1.1) rotate(120deg)",
+            opacity: "0.6"
+          },
+          "66%": {
             backgroundPosition: "100% 100%, 0% 0%, 0% 100%",
+            transform: "scale(0.9) rotate(240deg)",
+            opacity: "0.3"
+          },
+        },
+        "vault-3d-float": {
+          "0%, 100%": { 
+            transform: "translateY(0px) rotateX(0deg) rotateY(0deg) scale(1)",
+            boxShadow: "var(--vault-shadow-3d)"
+          },
+          "33%": { 
+            transform: "translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.02)",
+            boxShadow: "var(--vault-shadow-3d-hover)"
+          },
+          "66%": { 
+            transform: "translateY(-5px) rotateX(-3deg) rotateY(-3deg) scale(1.01)",
+            boxShadow: "var(--vault-shadow-3d)"
+          },
+        },
+        "vault-card-3d": {
+          "0%": { 
+            transform: "perspective(1000px) rotateY(-15deg) rotateX(5deg) scale(0.95)",
+            opacity: "0"
+          },
+          "100%": { 
+            transform: "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)",
+            opacity: "1"
           },
         },
       },
@@ -148,6 +182,8 @@ export default {
         "vault-pulse-glow": "vault-pulse-glow 3s ease-in-out infinite",
         "vault-particle-float": "vault-particle-float 6s ease-in-out infinite",
         "vault-mesh": "vault-mesh 20s ease-in-out infinite",
+        "vault-3d-float": "vault-3d-float 6s ease-in-out infinite",
+        "vault-card-3d": "vault-card-3d 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       },
       backgroundImage: {
         "vault-gradient": "var(--vault-gradient)",
@@ -157,6 +193,8 @@ export default {
       boxShadow: {
         "vault": "var(--vault-shadow)",
         "vault-hover": "var(--vault-shadow-hover)",
+        "vault-3d": "var(--vault-shadow-3d)",
+        "vault-3d-hover": "var(--vault-shadow-3d-hover)",
         "vault-glow": "var(--vault-glow-primary)",
         "vault-glow-hover": "var(--vault-glow-hover)",
       },

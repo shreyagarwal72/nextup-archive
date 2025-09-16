@@ -75,17 +75,22 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
   return (
     <Card 
       className={cn(
-        "group relative overflow-hidden border-border/50 backdrop-blur-vault bg-vault-glass",
-        "hover:bg-vault-card-hover hover:shadow-vault-hover hover:border-vault-border-glow",
-        "transition-all duration-500 ease-out hover:scale-[1.03] hover:-translate-y-2",
+        "group relative overflow-hidden border-vault-border-glow/30 backdrop-blur-vault bg-vault-glass-3d",
+        "hover:bg-vault-card-hover hover:shadow-vault-3d-hover hover:border-vault-border-glow",
+        "transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-2",
+        "shadow-vault-3d transform-gpu perspective-1000",
+        "hover:rotate-x-2 hover:rotate-y-2",
         "before:absolute before:inset-0 before:bg-vault-gradient-subtle before:opacity-0",
         "before:transition-opacity before:duration-500 hover:before:opacity-100",
         "after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/5 after:to-transparent",
         "after:translate-x-[-100%] after:animate-vault-shimmer after:duration-[2s]",
-        "hover:animate-vault-pulse-glow",
+        "animate-vault-card-3d hover:animate-vault-3d-float",
         className
       )}
-      style={style}
+      style={{
+        transformStyle: "preserve-3d",
+        ...style
+      }}
     >
       <div className="relative z-10 p-6 space-y-4">
         <div className="flex items-start justify-between">

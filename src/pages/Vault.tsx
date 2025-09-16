@@ -8,12 +8,11 @@ import { cn } from "@/lib/utils";
 const vaultFiles: FileItem[] = [
   {
     id: "1",
-    title: "Minecraft Skin",
-    description: "Custom Minecraft player skin for your character",
-    type: "image",
-    url: "video/1.png",
-    thumbnail: "video/1.png",
-    isExternal: false,
+    title: "All Sound effect",
+    description: "Complete collection of sound effects for video editing and content creation",
+    type: "drive",
+    url: "https://drive.google.com/drive/folders/1u6cDD5SpUC0M3eiDdYgalNvt58vKucgs",
+    isExternal: true,
   },
   {
     id: "2",

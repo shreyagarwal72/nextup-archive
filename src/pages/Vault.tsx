@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FileCard, FileItem } from "@/components/FileCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import SplitText from "@/components/ui/split-text";
 import { Search, Shield, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -119,9 +120,14 @@ const Vault = () => {
             <div className="w-8 h-8 bg-vault-gradient rounded-lg flex items-center justify-center shadow-vault-3d">
               <Shield className="h-4 w-4 text-white" />
             </div>
-            <h1 className="text-2xl font-bold bg-vault-gradient bg-clip-text text-transparent">
-              💎 Nextup Studio Vault
-            </h1>
+            <SplitText 
+              text="💎 Nextup Studio Vault"
+              tag="h1"
+              className="text-2xl font-bold bg-vault-gradient bg-clip-text text-transparent"
+              splitType="chars"
+              delay={50}
+              duration={0.6}
+            />
           </div>
           <p className="text-sm text-muted-foreground/70">{vaultFiles.length} Premium Resources Available</p>
         </div>

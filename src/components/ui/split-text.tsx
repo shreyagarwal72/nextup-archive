@@ -1,10 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText as GSAPSplitText } from 'gsap/SplitText';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
+import SplitType from 'split-type';
 
 interface SplitTextProps {
   text: string;
@@ -12,7 +7,7 @@ interface SplitTextProps {
   delay?: number;
   duration?: number;
   ease?: string;
-  splitType?: string;
+  splitType?: 'chars' | 'words' | 'lines';
   from?: Record<string, any>;
   to?: Record<string, any>;
   threshold?: number;
@@ -51,108 +46,56 @@ const SplitText = ({
     }
   }, []);
 
-  useGSAP(
-    () => {
-      if (!ref.current || !text || !fontsLoaded) return;
-      const el = ref.current;
-
-      if ((el as any)._rbsplitInstance) {
-        try {
-          (el as any)._rbsplitInstance.revert();
-        } catch (_) {
-          /* noop */
-        }
-        (el as any)._rbsplitInstance = null;
-      }
-
-      const startPct = (1 - threshold) * 100;
-      const marginMatch = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin);
-      const marginValue = marginMatch ? parseFloat(marginMatch[1]) : 0;
-      const marginUnit = marginMatch ? marginMatch[2] || 'px' : 'px';
-      const sign =
-        marginValue === 0
-          ? ''
-          : marginValue < 0
-            ? `-=${Math.abs(marginValue)}${marginUnit}`
-            : `+=${marginValue}${marginUnit}`;
-      const start = `top ${startPct}%${sign}`;
-
-      let targets: any;
-      const assignTargets = (self: any) => {
-        if (splitType.includes('chars') && self.chars.length) targets = self.chars;
-        if (!targets && splitType.includes('words') && self.words.length) targets = self.words;
-        if (!targets && splitType.includes('lines') && self.lines.length) targets = self.lines;
-        if (!targets) targets = self.chars || self.words || self.lines;
-      };
-
-      const splitInstance = new GSAPSplitText(el, {
-        type: splitType,
-        smartWrap: true,
-        autoSplit: splitType === 'lines',
-        linesClass: 'split-line',
-        wordsClass: 'split-word',
-        charsClass: 'split-char',
-        reduceWhiteSpace: false,
-        onSplit: (self: any) => {
-          assignTargets(self);
-          const tween = gsap.fromTo(
-            targets,
-            { ...from },
-            {
-              ...to,
-              duration,
-              ease,
-              stagger: delay / 1000,
-              scrollTrigger: {
-                trigger: el,
-                start,
-                once: true,
-                fastScrollEnd: true,
-                anticipatePin: 0.4
-              },
-              onComplete: () => {
-                animationCompletedRef.current = true;
-                onLetterAnimationComplete?.();
-              },
-              willChange: 'transform, opacity',
-              force3D: true
-            }
-          );
-          return tween;
-        }
-      });
-
-      (el as any)._rbsplitInstance = splitInstance;
-
-      return () => {
-        ScrollTrigger.getAll().forEach(st => {
-          if (st.trigger === el) st.kill();
+  useEffect(() => {
+    if (!ref.current || !text || !fontsLoaded) return;
+    
+    const element = ref.current;
+    const split = new SplitType(element, { types: splitType as any });
+    
+    // Get elements based on split type
+    let elements: Element[] = [];
+    if (splitType.includes('chars') && split.chars) elements = split.chars;
+    else if (splitType.includes('words') && split.words) elements = split.words;
+    else if (splitType.includes('lines') && split.lines) elements = split.lines;
+    
+    // Apply initial styles
+    elements.forEach((el, index) => {
+      const htmlEl = el as HTMLElement;
+      htmlEl.style.opacity = '0';
+      htmlEl.style.transform = `translateY(40px)`;
+      htmlEl.style.transition = `opacity ${duration}s ease ${index * (delay / 1000)}s, transform ${duration}s ease ${index * (delay / 1000)}s`;
+    });
+    
+    // Create intersection observer for scroll trigger
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            elements.forEach((el) => {
+              const htmlEl = el as HTMLElement;
+              htmlEl.style.opacity = '1';
+              htmlEl.style.transform = 'translateY(0px)';
+            });
+            
+            // Call completion callback after animation
+            setTimeout(() => {
+              onLetterAnimationComplete?.();
+            }, (elements.length * delay) + (duration * 1000));
+            
+            observer.disconnect();
+          }
         });
-        try {
-          splitInstance.revert();
-        } catch (_) {
-          /* noop */
-        }
-        (el as any)._rbsplitInstance = null;
-      };
-    },
-    {
-      dependencies: [
-        text,
-        delay,
-        duration,
-        ease,
-        splitType,
-        JSON.stringify(from),
-        JSON.stringify(to),
-        threshold,
-        rootMargin,
-        fontsLoaded,
-        onLetterAnimationComplete
-      ],
-      scope: ref
-    }
-  );
+      },
+      { threshold, rootMargin }
+    );
+    
+    observer.observe(element);
+    
+    return () => {
+      observer.disconnect();
+      split.revert();
+    };
+  }, [text, delay, duration, splitType, threshold, rootMargin, fontsLoaded, onLetterAnimationComplete]);
 
   const renderTag = () => {
     const style: React.CSSProperties = {

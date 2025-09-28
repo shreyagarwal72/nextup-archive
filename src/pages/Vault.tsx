@@ -120,23 +120,29 @@ const Vault = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Simple Header */}
-      <div className="relative bg-vault-backdrop border-b border-vault-border-glow/10">
-        <div className="container mx-auto px-4 py-8 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-8 bg-vault-gradient rounded-lg flex items-center justify-center shadow-vault-3d">
-              <Shield className="h-4 w-4 text-white" />
+      {/* Hero Header */}
+      <header className="relative bg-vault-backdrop border-b border-vault-border-glow/10">
+        <div className="container mx-auto px-4 py-12 text-center">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-vault-gradient rounded-xl flex items-center justify-center shadow-vault-3d">
+              <Shield className="h-5 w-5 text-white" />
             </div>
-            <h1 className="text-2xl font-bold bg-vault-gradient bg-clip-text text-transparent">
+            <h1 className="text-3xl md:text-4xl font-bold bg-vault-gradient bg-clip-text text-transparent">
               💎 Nextup Studio Vault
             </h1>
           </div>
-          <p className="text-sm text-muted-foreground/70">{vaultFiles.length} Premium Resources Available</p>
+          <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+            Your premium digital asset collection featuring exclusive apps, editing resources, and creative tools
+          </p>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground/70">
+            <Sparkles className="h-4 w-4" />
+            <span>{vaultFiles.length} Premium Resources Available</span>
+          </div>
         </div>
-      </div>
+      </header>
 
       {/* Search and Filter Section */}
-      <div className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-12">
         <div className="flex flex-col lg:flex-row gap-6 mb-12">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground/60" />
@@ -182,7 +188,7 @@ const Vault = () => {
         </div>
 
         {/* Files Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20" style={{ perspective: "1200px" }}>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20" style={{ perspective: "1200px" }} aria-label="Digital resources collection">
           {filteredFiles.map((file, index) => (
             <FileCard
               key={file.id}
@@ -198,7 +204,7 @@ const Vault = () => {
               } as React.CSSProperties}
             />
           ))}
-        </div>
+        </section>
 
         {filteredFiles.length === 0 && (
           <div className="text-center py-24">
@@ -222,7 +228,7 @@ const Vault = () => {
             </Button>
           </div>
         )}
-      </div>
+      </main>
 
       {/* Footer */}
       <footer className="border-t border-vault-border-glow/20 bg-vault-backdrop backdrop-blur-vault">

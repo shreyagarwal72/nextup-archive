@@ -1,73 +1,85 @@
-# Welcome to your Lovable project
+# 💎 Nextup Studio Vault
 
-## Project info
+A premium digital asset vault containing exclusive apps, video editing resources, entertainment content, and creative tools.
 
-**URL**: https://lovable.dev/projects/562d70f0-6c19-4694-90a7-62819833ebcd
+## 🚀 Features
 
-## How can I edit this code?
+- **Premium Apps Collection**: Curated selection of premium mobile apps and APKs
+- **Video Editing Resources**: Professional editing tools, sound effects, and templates  
+- **Entertainment Content**: Streaming apps and anime collections
+- **Educational Materials**: Premium courses and AI prompt libraries
+- **Creative Assets**: Editing templates and design resources
 
-There are several ways of editing your application.
+## 🎯 Resource Categories
 
-**Use Lovable**
+- **🎬 Video Editing**: Shotcut APK, editing apps, and creative tools
+- **🎵 Sound Effects**: Complete collection for content creation
+- **📱 Premium Apps**: MovieBox, live TV, and entertainment applications
+- **🎓 Educational**: Premium courses and learning materials
+- **🤖 AI Resources**: Comprehensive AI prompt collections
+- **📺 Entertainment**: Telegram channels and streaming content
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/562d70f0-6c19-4694-90a7-62819833ebcd) and start prompting.
+## 🔍 Search & Filter
 
-Changes made via Lovable will be committed automatically to this repo.
+- Advanced search across all resources
+- Filter by category (Apps, Videos, Drive, Telegram, etc.)
+- Real-time results with item counts
+- Responsive grid layout with 3D card effects
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS with custom design system
+- **UI Components**: Shadcn/ui component library
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **Animations**: CSS3 3D transforms and transitions
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🎨 Design Features
 
-Follow these steps:
+- **3D Vault Theme**: Glass morphism with depth effects
+- **Gradient Accents**: Custom vault-themed color palette
+- **Responsive Design**: Mobile-first approach
+- **Dark Mode Ready**: Comprehensive theming system
+- **Accessibility**: ARIA labels and semantic HTML
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📦 Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Clone the repository
+git clone <repository-url>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Navigate to project directory
+cd nextup-vault
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🌐 SEO Optimized
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Semantic HTML structure with proper headings
+- Comprehensive meta tags and Open Graph data
+- Structured data for search engines
+- Mobile-optimized viewport settings
+- Canonical URLs and social media integration
 
-**Use GitHub Codespaces**
+## 🚀 Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This project is built with modern web technologies and can be deployed on any static hosting platform:
 
-## What technologies are used for this project?
+- **Lovable**: Built-in deployment with custom domain support
+- **Vercel**: Zero-config deployment for React applications
+- **Netlify**: Continuous deployment from Git repositories
+- **GitHub Pages**: Free hosting for static sites
 
-This project is built with:
+## 📧 Contact
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Nextup Studio** - Premium digital asset creation and curation
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/562d70f0-6c19-4694-90a7-62819833ebcd) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*Securing your digital assets with premium vault technology* ⚡

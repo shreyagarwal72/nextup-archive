@@ -87,6 +87,14 @@ const vaultFiles: FileItem[] = [
     url: "https://drive.google.com/drive/folders/1RpqtuQzlgO3HVfl5-cQpjOBbuxtXw-8a",
     isExternal: true,
   },
+  {
+    id: "11",
+    title: "Ai unlimited Prompt Book",
+    description: "Comprehensive collection of AI prompts for various use cases",
+    type: "drive",
+    url: "https://docs.google.com/spreadsheets/d/1OP8oUzIOFkSCYTst43Y9mmasYvdbQkCKIJiQEa_qm-0/edit?usp=drivesdk",
+    isExternal: true,
+  },
 ];
 
 const Vault = () => {

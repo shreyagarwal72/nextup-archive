@@ -99,24 +99,12 @@ const vaultFiles: FileItem[] = [
 
 const Vault = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedType, setSelectedType] = useState<string>("all");
 
   const filteredFiles = vaultFiles.filter((file) => {
     const matchesSearch = file.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          file.description?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesType = selectedType === "all" || file.type === selectedType;
-    return matchesSearch && matchesType;
+    return matchesSearch;
   });
-
-  const fileTypes = [
-    { value: "all", label: "All Files", count: vaultFiles.length },
-    { value: "image", label: "Images", count: vaultFiles.filter(f => f.type === "image").length },
-    { value: "video", label: "Videos", count: vaultFiles.filter(f => f.type === "video").length },
-    { value: "apk", label: "APKs", count: vaultFiles.filter(f => f.type === "apk").length },
-    { value: "app", label: "Apps", count: vaultFiles.filter(f => f.type === "app").length },
-    { value: "drive", label: "Drive", count: vaultFiles.filter(f => f.type === "drive").length },
-    { value: "telegram", label: "Telegram", count: vaultFiles.filter(f => f.type === "telegram").length },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -143,10 +131,10 @@ const Vault = () => {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" />
       </header>
 
-      {/* Search and Filter Section */}
+      {/* Search Section */}
       <main className="container mx-auto px-4 py-12 md:py-16">
-        <div className="flex flex-col lg:flex-row gap-6 mb-14 animate-fade-in-up [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]">
-          <div className="relative flex-1">
+        <div className="max-w-2xl mx-auto mb-14 animate-fade-in-up [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]">
+          <div className="relative">
             <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground/60 transition-colors duration-300" />
             <Input
               placeholder="Search vault contents..."
@@ -157,36 +145,6 @@ const Vault = () => {
                 transition-all duration-500 text-base rounded-2xl
                 hover:border-vault-border-glow/40 hover:bg-vault-glass"
             />
-          </div>
-          
-          <div className="flex flex-wrap gap-3">
-            {fileTypes.map((type, index) => (
-              <Button
-                key={type.value}
-                variant={selectedType === type.value ? "default" : "outline"}
-                size="lg"
-                onClick={() => setSelectedType(type.value)}
-                className={cn(
-                  "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 backdrop-blur-sm",
-                  "animate-slide-in-right [animation-delay:var(--animation-delay)] opacity-0 [animation-fill-mode:forwards]",
-                  "rounded-xl font-semibold active:scale-95",
-                  selectedType === type.value 
-                    ? "bg-vault-gradient hover:opacity-95 shadow-vault-glow hover:shadow-vault-glow-hover border-0" 
-                    : "bg-vault-glass-3d border-vault-border-glow/20 hover:border-vault-border-glow/60 hover:bg-vault-card-hover hover:shadow-lg"
-                )}
-                style={{ '--animation-delay': `${700 + index * 70}ms` } as React.CSSProperties}
-              >
-                {type.label}
-                <span className={cn(
-                  "ml-2.5 text-xs px-2.5 py-1 rounded-full transition-all duration-300 font-bold",
-                  selectedType === type.value 
-                    ? "bg-white/25 text-white" 
-                    : "bg-primary/10 text-primary group-hover:bg-primary/20"
-                )}>
-                  {type.count}
-                </span>
-              </Button>
-            ))}
           </div>
         </div>
 
@@ -223,17 +181,14 @@ const Vault = () => {
               Try adjusting your search terms or filter criteria to discover more premium resources
             </p>
             <Button 
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedType("all");
-              }}
+              onClick={() => setSearchQuery("")}
               variant="outline"
               className="mt-2 bg-vault-glass-3d border-vault-border-glow/30 hover:bg-vault-card-hover hover:border-vault-border-glow/60 
                 shadow-vault-3d hover:shadow-vault-glow-hover transform-gpu hover:scale-105 
                 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95
                 text-base px-8 py-6 rounded-xl font-semibold"
             >
-              Clear Filters
+              Clear Search
             </Button>
           </div>
         )}

@@ -75,16 +75,14 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
   return (
     <Card 
       className={cn(
-        "group relative overflow-hidden border-vault-border-glow/30 backdrop-blur-vault bg-vault-glass-3d",
-        "hover:bg-vault-card-hover hover:shadow-vault-3d-hover hover:border-vault-border-glow",
-        "transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-2",
-        "shadow-vault-3d transform-gpu perspective-1000",
-        "hover:rotate-x-2 hover:rotate-y-2",
-        "before:absolute before:inset-0 before:bg-vault-gradient-subtle before:opacity-0",
-        "before:transition-opacity before:duration-500 hover:before:opacity-100",
-        "after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/5 after:to-transparent",
-        "after:translate-x-[-100%] after:animate-vault-shimmer after:duration-[2s]",
-        "animate-vault-card-3d hover:animate-vault-3d-float",
+        "group relative overflow-hidden border-vault-border-glow/20 backdrop-blur-vault bg-vault-glass-3d",
+        "hover:bg-vault-card-hover hover:shadow-vault-3d-hover hover:border-vault-border-glow/60",
+        "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] hover:-translate-y-3",
+        "shadow-vault-3d transform-gpu will-change-transform",
+        "before:absolute before:inset-0 before:bg-vault-gradient-subtle before:opacity-0 before:z-0",
+        "before:transition-all before:duration-700 hover:before:opacity-100",
+        "after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-primary/5 after:to-transparent",
+        "after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100 after:z-0",
         className
       )}
       style={{
@@ -92,23 +90,24 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
         ...style
       }}
     >
-      <div className="relative z-10 p-6 space-y-4">
+      <div className="relative z-10 p-7 space-y-5">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3 min-w-0 flex-1">
+          <div className="flex items-center gap-4 min-w-0 flex-1">
             <div className={cn(
-              "p-3 rounded-xl bg-secondary/30 backdrop-blur-sm border border-white/10",
-              "group-hover:bg-secondary/50 group-hover:scale-110 group-hover:rotate-3",
-              "transition-all duration-300 ease-out shadow-lg",
+              "p-3.5 rounded-2xl bg-gradient-to-br from-secondary/40 to-secondary/20 backdrop-blur-sm border border-white/10",
+              "group-hover:from-secondary/60 group-hover:to-secondary/40 group-hover:scale-110 group-hover:rotate-6",
+              "group-hover:shadow-lg group-hover:shadow-primary/20",
+              "transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] shadow-md",
               iconColor
             )}>
               <Icon className="h-6 w-6" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors duration-300 truncate text-lg">
+              <h3 className="font-bold text-card-foreground group-hover:text-primary transition-colors duration-400 truncate text-lg tracking-tight">
                 {file.title}
               </h3>
               {file.description && (
-                <p className="text-sm text-muted-foreground/80 mt-1 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-muted-foreground/70 group-hover:text-muted-foreground/90 mt-1.5 line-clamp-2 leading-relaxed transition-colors duration-300">
                   {file.description}
                 </p>
               )}
@@ -149,26 +148,27 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
         <Button
           onClick={handleClick}
           className={cn(
-            "w-full bg-vault-gradient hover:opacity-90 text-white border-0",
+            "w-full bg-vault-gradient hover:opacity-95 text-white border-0",
             "shadow-vault-glow hover:shadow-vault-glow-hover",
-            "transition-all duration-300 ease-out hover:scale-105",
+            "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.02] active:scale-[0.98]",
             "relative overflow-hidden group/btn",
             "before:absolute before:inset-0 before:bg-gradient-to-r",
-            "before:from-transparent before:via-white/20 before:to-transparent",
-            "before:translate-x-[-100%] hover:before:translate-x-[100%]",
-            "before:transition-transform before:duration-700"
+            "before:from-transparent before:via-white/25 before:to-transparent",
+            "before:translate-x-[-200%] hover:before:translate-x-[200%]",
+            "before:transition-transform before:duration-1000",
+            "font-semibold tracking-wide"
           )}
           size="lg"
         >
-          <span className="relative z-10 flex items-center justify-center gap-2 font-medium">
+          <span className="relative z-10 flex items-center justify-center gap-2.5 group-hover/btn:gap-3 transition-all duration-300">
             {file.isExternal ? (
               <>
-                <ExternalLink className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
                 Open Link
               </>
             ) : (
               <>
-                <Download className="h-4 w-4" />
+                <Download className="h-4 w-4 group-hover/btn:translate-y-0.5 transition-transform duration-300" />
                 Download
               </>
             )}

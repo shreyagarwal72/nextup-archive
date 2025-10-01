@@ -40,6 +40,7 @@ All colors MUST be HSL.
 
     /* Vault-specific design tokens */
     --vault-gradient: linear-gradient(135deg, hsl(195 100% 60%) 0%, hsl(210 100% 65%) 30%, hsl(225 90% 70%) 70%, hsl(240 85% 75%) 100%);
+    --vault-gradient-soft: linear-gradient(135deg, hsl(195 100% 60% / 0.9) 0%, hsl(210 100% 65% / 0.85) 50%, hsl(225 90% 70% / 0.9) 100%);
     --vault-gradient-subtle: linear-gradient(135deg, hsl(195 100% 60% / 0.12) 0%, hsl(210 100% 65% / 0.08) 30%, hsl(225 90% 70% / 0.10) 70%, hsl(240 85% 75% / 0.06) 100%);
     --vault-card-hover: 220 30% 8%;
     --vault-border-glow: hsl(195 100% 60% / 0.5);
@@ -51,11 +52,16 @@ All colors MUST be HSL.
     --vault-glow-hover: 0 0 70px hsl(195 100% 60% / 0.6);
     --vault-backdrop: hsl(215 25% 4% / 0.95);
     --vault-glass: hsl(220 20% 6% / 0.8);
-    --vault-glass-3d: hsl(220 20% 6% / 0.9);
+    --vault-glass-3d: hsl(220 20% 6% / 0.92);
     --vault-particle: hsl(195 100% 60% / 0.15);
     --vault-mesh: radial-gradient(circle at 25% 25%, hsl(195 100% 60% / 0.1) 0%, transparent 50%),
                    radial-gradient(circle at 75% 75%, hsl(210 100% 65% / 0.08) 0%, transparent 50%),
                    radial-gradient(circle at 50% 100%, hsl(225 90% 70% / 0.06) 0%, transparent 50%);
+    
+    /* Animation timing */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elegant: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -120,5 +126,23 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
   }
 }

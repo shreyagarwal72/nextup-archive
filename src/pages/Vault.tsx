@@ -121,40 +121,42 @@ const Vault = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Header */}
-      <header className="relative bg-vault-backdrop border-b border-vault-border-glow/10">
-        <div className="container mx-auto px-4 py-12 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-vault-gradient rounded-xl flex items-center justify-center shadow-vault-3d">
-              <Shield className="h-5 w-5 text-white" />
+      <header className="relative bg-vault-backdrop border-b border-vault-border-glow/10 overflow-hidden">
+        <div className="absolute inset-0 bg-vault-mesh opacity-30 animate-vault-mesh" />
+        <div className="container mx-auto px-4 py-16 md:py-20 text-center relative z-10">
+          <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-vault-gradient rounded-2xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow">
+              <Shield className="h-6 w-6 md:h-7 md:h-7 text-white" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold bg-vault-gradient bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-vault-gradient bg-clip-text text-transparent tracking-tight">
               💎 Nextup Studio Vault
             </h1>
           </div>
-          <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground/90 mb-6 max-w-3xl mx-auto leading-relaxed animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
             Your premium digital asset collection featuring exclusive apps, editing resources, and creative tools
           </p>
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground/70">
-            <Sparkles className="h-4 w-4" />
-            <span>{vaultFiles.length} Premium Resources Available</span>
+          <div className="flex items-center justify-center gap-2.5 text-sm md:text-base text-muted-foreground/70 animate-fade-in [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]">
+            <Sparkles className="h-5 w-5 text-primary animate-pulse" />
+            <span className="font-medium">{vaultFiles.length} Premium Resources Available</span>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" />
       </header>
 
       {/* Search and Filter Section */}
-      <main className="container mx-auto px-4 py-12">
-        <div className="flex flex-col lg:flex-row gap-6 mb-12">
+      <main className="container mx-auto px-4 py-12 md:py-16">
+        <div className="flex flex-col lg:flex-row gap-6 mb-14 animate-fade-in-up [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]">
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground/60" />
+            <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground/60 transition-colors duration-300" />
             <Input
               placeholder="Search vault contents..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 pr-4 py-3 bg-vault-glass-3d backdrop-blur-vault border-vault-border-glow/20 focus:border-vault-border-glow focus:shadow-vault-3d transition-all duration-300 text-base"
+              className="pl-14 pr-5 py-4 bg-vault-glass-3d backdrop-blur-vault border-vault-border-glow/20 
+                focus:border-vault-border-glow focus:shadow-vault-glow focus:bg-vault-glass 
+                transition-all duration-500 text-base rounded-2xl
+                hover:border-vault-border-glow/40 hover:bg-vault-glass"
             />
-            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <div className="w-6 h-6 bg-vault-gradient rounded opacity-20" />
-            </div>
           </div>
           
           <div className="flex flex-wrap gap-3">
@@ -165,20 +167,21 @@ const Vault = () => {
                 size="lg"
                 onClick={() => setSelectedType(type.value)}
                 className={cn(
-                  "transition-all duration-300 hover:scale-105 backdrop-blur-sm",
-                  "animate-fade-in [animation-delay:var(--animation-delay)]",
+                  "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 backdrop-blur-sm",
+                  "animate-slide-in-right [animation-delay:var(--animation-delay)] opacity-0 [animation-fill-mode:forwards]",
+                  "rounded-xl font-semibold active:scale-95",
                   selectedType === type.value 
-                    ? "bg-vault-gradient hover:opacity-90 shadow-vault-3d border-0" 
-                    : "bg-vault-glass-3d border-vault-border-glow/20 hover:border-vault-border-glow hover:bg-vault-card-hover"
+                    ? "bg-vault-gradient hover:opacity-95 shadow-vault-glow hover:shadow-vault-glow-hover border-0" 
+                    : "bg-vault-glass-3d border-vault-border-glow/20 hover:border-vault-border-glow/60 hover:bg-vault-card-hover hover:shadow-lg"
                 )}
-                style={{ '--animation-delay': `${600 + index * 50}ms` } as React.CSSProperties}
+                style={{ '--animation-delay': `${700 + index * 70}ms` } as React.CSSProperties}
               >
                 {type.label}
                 <span className={cn(
-                  "ml-2 text-xs px-2 py-1 rounded-full transition-all",
+                  "ml-2.5 text-xs px-2.5 py-1 rounded-full transition-all duration-300 font-bold",
                   selectedType === type.value 
-                    ? "bg-white/20 text-white" 
-                    : "bg-primary/10 text-primary"
+                    ? "bg-white/25 text-white" 
+                    : "bg-primary/10 text-primary group-hover:bg-primary/20"
                 )}>
                   {type.count}
                 </span>
@@ -188,18 +191,21 @@ const Vault = () => {
         </div>
 
         {/* Files Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20" style={{ perspective: "1200px" }} aria-label="Digital resources collection">
+        <section 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 mb-20" 
+          style={{ perspective: "1500px" }} 
+          aria-label="Digital resources collection"
+        >
           {filteredFiles.map((file, index) => (
             <FileCard
               key={file.id}
               file={file}
               className={cn(
-                "animate-vault-card-3d [animation-delay:var(--animation-delay)]",
-                "hover:animate-vault-3d-float",
-                "transform-gpu"
+                "animate-scale-in [animation-delay:var(--animation-delay)] opacity-0 [animation-fill-mode:forwards]",
+                "transform-gpu will-change-transform"
               )}
               style={{ 
-                '--animation-delay': `${index * 100}ms`,
+                '--animation-delay': `${900 + index * 80}ms`,
                 transformStyle: "preserve-3d"
               } as React.CSSProperties}
             />
@@ -207,13 +213,13 @@ const Vault = () => {
         </section>
 
         {filteredFiles.length === 0 && (
-          <div className="text-center py-24">
-            <div className="relative inline-block">
-              <div className="text-8xl mb-6 animate-bounce">🔍</div>
-              <div className="absolute inset-0 bg-vault-gradient rounded-full blur-2xl opacity-20" />
+          <div className="text-center py-32 animate-fade-in">
+            <div className="relative inline-block mb-8">
+              <div className="text-9xl animate-bounce">🔍</div>
+              <div className="absolute inset-0 bg-vault-gradient rounded-full blur-3xl opacity-30 animate-pulse" />
             </div>
-            <h3 className="text-2xl font-bold text-muted-foreground mb-4">No files found</h3>
-            <p className="text-muted-foreground/80 text-lg max-w-md mx-auto leading-relaxed">
+            <h3 className="text-3xl font-bold text-muted-foreground mb-5">No files found</h3>
+            <p className="text-muted-foreground/80 text-xl max-w-lg mx-auto leading-relaxed mb-8">
               Try adjusting your search terms or filter criteria to discover more premium resources
             </p>
             <Button 
@@ -222,7 +228,10 @@ const Vault = () => {
                 setSelectedType("all");
               }}
               variant="outline"
-              className="mt-6 bg-vault-glass-3d border-vault-border-glow/30 hover:bg-vault-card-hover hover:border-vault-border-glow shadow-vault-3d hover:shadow-vault-3d-hover transform-gpu hover:scale-105"
+              className="mt-2 bg-vault-glass-3d border-vault-border-glow/30 hover:bg-vault-card-hover hover:border-vault-border-glow/60 
+                shadow-vault-3d hover:shadow-vault-glow-hover transform-gpu hover:scale-105 
+                transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95
+                text-base px-8 py-6 rounded-xl font-semibold"
             >
               Clear Filters
             </Button>
@@ -231,24 +240,27 @@ const Vault = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-vault-border-glow/20 bg-vault-backdrop backdrop-blur-vault">
-        <div className="container mx-auto px-4 py-12">
+      <footer className="relative border-t border-vault-border-glow/20 bg-vault-backdrop backdrop-blur-vault overflow-hidden">
+        <div className="absolute inset-0 bg-vault-mesh opacity-20" />
+        <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-vault-gradient rounded-lg flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow">
-                <Shield className="h-4 w-4 text-white" />
+            <div className="flex items-center justify-center gap-3 mb-6 animate-fade-in">
+              <div className="w-10 h-10 bg-vault-gradient rounded-xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow">
+                <Shield className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold bg-vault-gradient bg-clip-text text-transparent">
+              <span className="text-xl font-extrabold bg-vault-gradient bg-clip-text text-transparent tracking-tight">
                 Nextup Studio
               </span>
             </div>
-            <div className="text-sm text-muted-foreground/80">
-              © 2025 <span className="font-semibold text-primary">Nextup Studio</span>. All rights reserved.
-              <br />
-              <span className="text-xs mt-2 block">Securing your digital assets with premium vault technology</span>
+            <div className="text-sm md:text-base text-muted-foreground/80 space-y-2">
+              <p>© 2025 <span className="font-bold text-primary">Nextup Studio</span>. All rights reserved.</p>
+              <p className="text-xs text-muted-foreground/60 max-w-md mx-auto leading-relaxed">
+                Securing your digital assets with premium vault technology
+              </p>
             </div>
           </div>
         </div>
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" />
       </footer>
     </div>
   );

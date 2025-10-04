@@ -76,12 +76,12 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
     <Card 
       className={cn(
         "group relative overflow-hidden border-vault-border-glow/20 backdrop-blur-vault bg-vault-glass-3d",
-        "hover:bg-vault-card-hover hover:shadow-vault-3d-hover hover:border-vault-border-glow/60",
-        "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] hover:-translate-y-3",
-        "shadow-vault-3d transform-gpu will-change-transform",
+        "hover:bg-vault-card-hover hover:shadow-vault-glow-hover hover:border-vault-border-glow/70",
+        "transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.05] hover:-translate-y-4",
+        "shadow-vault-3d transform-gpu will-change-transform rounded-3xl",
         "before:absolute before:inset-0 before:bg-vault-gradient-subtle before:opacity-0 before:z-0",
         "before:transition-all before:duration-700 hover:before:opacity-100",
-        "after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-primary/5 after:to-transparent",
+        "after:absolute after:inset-0 after:bg-gradient-to-br after:from-primary/10 after:via-transparent after:to-primary/5",
         "after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100 after:z-0",
         className
       )}
@@ -90,24 +90,24 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
         ...style
       }}
     >
-      <div className="relative z-10 p-7 space-y-5">
+      <div className="relative z-10 p-8 space-y-6">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-4 min-w-0 flex-1">
+          <div className="flex items-center gap-5 min-w-0 flex-1">
             <div className={cn(
-              "p-3.5 rounded-2xl bg-gradient-to-br from-secondary/40 to-secondary/20 backdrop-blur-sm border border-white/10",
-              "group-hover:from-secondary/60 group-hover:to-secondary/40 group-hover:scale-110 group-hover:rotate-6",
-              "group-hover:shadow-lg group-hover:shadow-primary/20",
-              "transition-all duration-500 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] shadow-md",
+              "p-4 rounded-3xl bg-gradient-to-br from-secondary/50 to-secondary/20 backdrop-blur-sm border border-white/20",
+              "group-hover:from-secondary/70 group-hover:to-secondary/40 group-hover:scale-110 group-hover:rotate-6",
+              "group-hover:shadow-xl group-hover:shadow-primary/30",
+              "transition-all duration-600 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] shadow-lg",
               iconColor
             )}>
-              <Icon className="h-6 w-6" />
+              <Icon className="h-7 w-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-card-foreground group-hover:text-primary transition-colors duration-400 truncate text-lg tracking-tight">
+              <h3 className="font-black text-card-foreground group-hover:text-primary transition-colors duration-400 truncate text-xl tracking-tight">
                 {file.title}
               </h3>
               {file.description && (
-                <p className="text-sm text-muted-foreground/70 group-hover:text-muted-foreground/90 mt-1.5 line-clamp-2 leading-relaxed transition-colors duration-300">
+                <p className="text-sm text-muted-foreground/70 group-hover:text-muted-foreground/90 mt-2 line-clamp-2 leading-relaxed transition-colors duration-300">
                   {file.description}
                 </p>
               )}
@@ -116,59 +116,58 @@ export const FileCard = ({ file, className, style }: FileCardProps) => {
         </div>
 
         {file.thumbnail && file.type === 'image' && (
-          <div className="aspect-video rounded-xl overflow-hidden bg-secondary/10 border border-white/10 relative">
+          <div className="aspect-video rounded-2xl overflow-hidden bg-secondary/10 border border-white/20 relative shadow-lg">
             <img 
               src={file.thumbnail} 
               alt={file.title}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
           </div>
         )}
 
         {file.thumbnail && file.type === 'video' && (
-          <div className="aspect-video rounded-xl overflow-hidden bg-secondary/10 border border-white/10 relative group/video">
+          <div className="aspect-video rounded-2xl overflow-hidden bg-secondary/10 border border-white/20 relative group/video shadow-lg">
             <video 
               src={file.thumbnail}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               muted
               loop
               onMouseEnter={(e) => e.currentTarget.play()}
               onMouseLeave={(e) => e.currentTarget.pause()}
             />
-            <div className="absolute inset-0 flex items-center justify-center opacity-80 group-hover/video:opacity-0 transition-opacity duration-300">
-              <div className="bg-black/60 backdrop-blur-sm rounded-full p-4 border border-white/20">
-                <Play className="h-8 w-8 text-white fill-white" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover/video:opacity-0 transition-opacity duration-400">
+              <div className="bg-black/70 backdrop-blur-md rounded-full p-5 border border-white/30 shadow-xl">
+                <Play className="h-9 w-9 text-white fill-white" />
               </div>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
           </div>
         )}
 
         <Button
           onClick={handleClick}
           className={cn(
-            "w-full bg-vault-gradient hover:opacity-95 text-white border-0",
+            "w-full bg-vault-gradient hover:opacity-95 text-white border-0 rounded-2xl",
             "shadow-vault-glow hover:shadow-vault-glow-hover",
-            "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.02] active:scale-[0.98]",
-            "relative overflow-hidden group/btn",
+            "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] active:scale-[0.97]",
+            "relative overflow-hidden group/btn py-7",
             "before:absolute before:inset-0 before:bg-gradient-to-r",
-            "before:from-transparent before:via-white/25 before:to-transparent",
+            "before:from-transparent before:via-white/30 before:to-transparent",
             "before:translate-x-[-200%] hover:before:translate-x-[200%]",
             "before:transition-transform before:duration-1000",
-            "font-semibold tracking-wide"
+            "font-bold tracking-wide text-base"
           )}
-          size="lg"
         >
-          <span className="relative z-10 flex items-center justify-center gap-2.5 group-hover/btn:gap-3 transition-all duration-300">
+          <span className="relative z-10 flex items-center justify-center gap-3 group-hover/btn:gap-4 transition-all duration-300">
             {file.isExternal ? (
               <>
-                <ExternalLink className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                <ExternalLink className="h-5 w-5 group-hover/btn:rotate-12 transition-transform duration-300" />
                 Open Link
               </>
             ) : (
               <>
-                <Download className="h-4 w-4 group-hover/btn:translate-y-0.5 transition-transform duration-300" />
+                <Download className="h-5 w-5 group-hover/btn:translate-y-0.5 transition-transform duration-300" />
                 Download
               </>
             )}

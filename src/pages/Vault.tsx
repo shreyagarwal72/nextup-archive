@@ -177,33 +177,35 @@ const Vault = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
         <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 text-center relative z-10">
           <div className="flex items-center justify-center gap-4 md:gap-5 mb-8 md:mb-10 animate-fade-in">
-            <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-vault-gradient rounded-2xl md:rounded-3xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow">
+            <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-vault-gradient rounded-2xl md:rounded-3xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow" aria-hidden="true">
               <Shield className="h-6 w-6 md:h-7 md:w-7 lg:h-8 lg:w-8 text-white" />
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-vault-gradient bg-clip-text text-transparent tracking-tight">
-              💎 Vault
+              Nextup Studio Vault
             </h1>
           </div>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-muted-foreground/90 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-            Your premium digital asset collection featuring exclusive apps, editing resources, and creative tools
+            Nextup Studio's premium digital asset collection featuring exclusive video editing apps, sound effects, AI tools, and creative resources for professional content creators
           </p>
           <div className="flex items-center justify-center gap-2 md:gap-3 text-sm sm:text-base md:text-lg text-muted-foreground/70 animate-fade-in [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]">
-            <Sparkles className="h-5 w-5 md:h-6 md:w-6 text-primary animate-pulse" />
+            <Sparkles className="h-5 w-5 md:h-6 md:w-6 text-primary animate-pulse" aria-hidden="true" />
             <span className="font-semibold">{vaultFiles.length} Premium Resources Available</span>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" aria-hidden="true" />
       </header>
 
       {/* Search Section */}
       <main id="resources" className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+        <h2 className="sr-only">Browse Nextup Studio Premium Resources</h2>
         <div className="max-w-3xl mx-auto mb-12 md:mb-16 animate-fade-in-up [animation-delay:600ms] opacity-0 [animation-fill-mode:forwards]">
           <div className="relative group">
-            <Search className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 h-5 w-5 md:h-6 md:w-6 text-muted-foreground/60 group-focus-within:text-primary transition-all duration-300 group-focus-within:scale-110" />
+            <Search className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 h-5 w-5 md:h-6 md:w-6 text-muted-foreground/60 group-focus-within:text-primary transition-all duration-300 group-focus-within:scale-110" aria-hidden="true" />
             <Input
-              placeholder="Search for apps, tools, and resources..."
+              placeholder="Search for video editing apps, sound effects, AI tools..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search Nextup Studio resources"
               className="pl-12 md:pl-16 pr-4 md:pr-6 py-5 md:py-7 bg-vault-glass-3d backdrop-blur-vault border-vault-border-glow/20 
                 focus:border-vault-border-glow focus:shadow-vault-glow-hover focus:bg-vault-glass 
                 transition-all duration-500 text-base md:text-lg rounded-2xl md:rounded-3xl font-medium
@@ -260,12 +262,12 @@ const Vault = () => {
 
       {/* Footer */}
       <footer id="contact" className="relative border-t border-vault-border-glow/20 bg-vault-backdrop backdrop-blur-vault overflow-hidden">
-        <div className="absolute inset-0 bg-vault-mesh opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-vault-mesh opacity-20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent" aria-hidden="true" />
         <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-6 md:mb-8 animate-fade-in">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-vault-gradient rounded-xl md:rounded-2xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-vault-gradient rounded-xl md:rounded-2xl flex items-center justify-center shadow-vault-3d animate-vault-pulse-glow" aria-hidden="true">
                 <Shield className="h-5 w-5 md:h-6 md:w-6 text-white" />
               </div>
               <span className="text-xl md:text-2xl font-black bg-vault-gradient bg-clip-text text-transparent tracking-tight">
@@ -275,12 +277,12 @@ const Vault = () => {
             <div className="text-sm md:text-base lg:text-lg text-muted-foreground/80 space-y-2 md:space-y-3">
               <p>© 2025 <span className="font-bold text-primary">Nextup Studio</span>. All rights reserved.</p>
               <p className="text-xs md:text-sm text-muted-foreground/60 max-w-xl mx-auto leading-relaxed px-4">
-                Securing your digital assets with premium vault technology and professional tools
+                Professional digital resource vault by Nextup Studio - Securing your creative assets with premium video editing tools, sound effects, and AI-powered solutions
               </p>
             </div>
           </div>
         </div>
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vault-border-glow to-transparent opacity-50" aria-hidden="true" />
       </footer>
     </div>
   );

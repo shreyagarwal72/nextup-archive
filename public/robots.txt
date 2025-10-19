@@ -1,7 +1,22 @@
+# Nextup Studio - Robots Configuration
+User-agent: *
+Allow: /
+Crawl-delay: 0
+
+# Specific bot permissions
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +25,5 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Sitemap location
+Sitemap: https://nextup-vault.lovable.app/sitemap.xml
